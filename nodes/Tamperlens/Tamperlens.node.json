@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-tamperlens.tamperlens",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Finance & Accounting", "Utility"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://tamperlens.com/api"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://tamperlens.com/api-reference"
+			}
+		]
+	}
+}

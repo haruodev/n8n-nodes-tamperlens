@@ -1,0 +1,53 @@
+{
+  "name": "n8n-nodes-tamperlens",
+  "version": "0.1.0",
+  "description": "n8n community node for Tamperlens — structural fraud signals for PDFs, images and Office documents. Evidence, not verdicts.",
+  "keywords": [
+    "n8n-community-node-package",
+    "pdf",
+    "document-fraud",
+    "tampering",
+    "kyc",
+    "document-verification"
+  ],
+  "license": "MIT",
+  "homepage": "https://tamperlens.com",
+  "author": {
+    "name": "Douglas Haruo",
+    "email": "dloko7@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haruodev/n8n-nodes-tamperlens.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && node -e \"const fs=require('fs');for(const f of['tamperlens.svg','Tamperlens.node.json'])fs.copyFileSync('nodes/Tamperlens/'+f,'dist/nodes/Tamperlens/'+f)\"",
+    "dev": "tsc --watch",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/TamperlensApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Tamperlens/Tamperlens.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "n8n-workflow": "^1.82.0",
+    "typescript": "^5.5.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
