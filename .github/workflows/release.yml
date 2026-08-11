@@ -26,6 +26,8 @@ jobs:
           node-version: 22
       # Node 22 bundles npm 10; token-less Trusted Publishing (OIDC) needs npm >= 11.5.
       - run: npm install -g npm@latest
+      # The two preconditions OIDC publishing silently depends on.
+      - run: npm --version && node -e "console.log('OIDC env present:', Boolean(process.env.ACTIONS_ID_TOKEN_REQUEST_URL))"
       - run: npm ci
       - run: npm test
       - run: npm publish --provenance --access public
