@@ -78,8 +78,15 @@ the stage wholesale:
 docker rm -f n8n-tamperlens-demo
 docker run -d --name n8n-tamperlens-demo -p 5679:5678 \
   -e N8N_SECURE_COOKIE=false \
+  -e N8N_RESTRICT_FILE_ACCESS_TO=/data/corpus \
+  -v n8n_tamperlens_demo_data:/home/node/.n8n \
   -v ~/work/tamperlens/corpus/synthetic:/data/corpus:ro n8nio/n8n:latest
 ```
+
+Two flags learned the hard way: without `N8N_RESTRICT_FILE_ACCESS_TO`
+the Read File node answers "Access to the file is not allowed", and
+without the named volume the account and workflows live in the container
+layer and die with it.
 
 Corpus files regenerate with `npx tsx scripts/make-showcase.mjs` in the
 tamperlens repo.
