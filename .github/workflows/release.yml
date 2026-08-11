@@ -1,0 +1,27 @@
+# Publishes to npm with a provenance statement, which n8n requires for
+# verified community nodes (local-machine publishes are rejected since
+# 2026-05-01). Token-less: npm Trusted Publishing must name this repo and
+# this workflow file in the package's settings on npmjs.com — no NPM_TOKEN
+# secret exists or is needed.
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  id-token: write # OIDC token for npm Trusted Publishing + provenance
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm test
+      - run: npm publish --provenance --access public
