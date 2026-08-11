@@ -18,10 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # No registry-url: that option writes an .npmrc with a placeholder
+      # _authToken, and npm then presents the placeholder instead of doing
+      # the OIDC exchange. Trusted publishing wants NO configured auth.
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org
       # Node 22 bundles npm 10; token-less Trusted Publishing (OIDC) needs npm >= 11.5.
       - run: npm install -g npm@latest
       - run: npm ci
