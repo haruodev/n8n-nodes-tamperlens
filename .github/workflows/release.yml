@@ -30,4 +30,4 @@ jobs:
       - run: npm --version && node -e "console.log('OIDC env present:', Boolean(process.env.ACTIONS_ID_TOKEN_REQUEST_URL))"
       - run: npm ci
       - run: npm test
-      - run: npm publish --provenance --access public
+      - run: npm publish --access public
