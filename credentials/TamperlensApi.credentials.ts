@@ -2,6 +2,7 @@ import type {
 	IAuthenticateGeneric,
 	ICredentialTestRequest,
 	ICredentialType,
+	Icon,
 	INodeProperties,
 } from 'n8n-workflow';
 
@@ -9,6 +10,11 @@ export class TamperlensApi implements ICredentialType {
 	name = 'tamperlensApi';
 
 	displayName = 'Tamperlens API';
+
+	icon: Icon = {
+		light: 'file:../nodes/Tamperlens/tamperlens.svg',
+		dark: 'file:../nodes/Tamperlens/tamperlens.dark.svg',
+	};
 
 	documentationUrl = 'https://tamperlens.com/api';
 

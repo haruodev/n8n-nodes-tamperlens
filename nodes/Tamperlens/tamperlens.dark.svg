@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none" role="img" aria-label="Tamperlens">
+  <!-- Tamperlens mark. A document whose text lines run straight — except the one
+       the lens crosses, which inside the glass sits visibly low, and in accent.
+       That is the product in one shape: the edit was always in the bytes, the
+       lens is only what makes it legible. Flatten the teal to ink and it still
+       reads, because the story is geometry (an offset line), not colour.
+       Hand-authored coordinates on a 64-unit grid; no text, no external refs. -->
+  <defs>
+    <!-- Everything outside the lens rim. Applied to the one tampered line so its
+         in-glass portion is removed and replaced by the displaced fragment. -->
+    <mask id="tlm-out" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect width="64" height="64" fill="#fff" />
+      <circle cx="40" cy="40" r="12.7" fill="#000" />
+    </mask>
+    <clipPath id="tlm-in">
+      <circle cx="40" cy="40" r="11.5" />
+    </clipPath>
+  </defs>
+
+  <!-- document body + folded top-right corner -->
+  <g stroke="#e8eae8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15 5h21l11 11v38a4 4 0 0 1-4 4H15a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4Z" />
+    <path d="M36 5v11h11" />
+  </g>
+
+  <!-- Text lines. The glass is transparent, so the head line and the last line
+       run straight on through it. The middle line stops where the lens begins. -->
+  <g stroke="#e8eae8" stroke-width="2.4" stroke-linecap="round">
+    <path d="M19 24h14" />
+    <path d="M19 46h22" />
+    <path d="M19 34h22" mask="url(#tlm-out)" />
+  </g>
+
+  <!-- the lens: glass, the displaced fragment it reveals, then the rim -->
+  <circle cx="40" cy="40" r="11.5" fill="#0f766e" fill-opacity="0.08" />
+  <g clip-path="url(#tlm-in)" stroke="#0f766e" stroke-width="2.4" stroke-linecap="round">
+    <path d="M19 38.5h22" />
+  </g>
+  <circle cx="40" cy="40" r="11.5" stroke="#0f766e" stroke-width="2.8" />
+</svg>

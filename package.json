@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-tamperlens",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "n8n community node for Tamperlens — structural fraud signals for PDFs, images and Office documents. Evidence, not verdicts.",
   "keywords": [
     "n8n-community-node-package",
@@ -25,7 +25,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "tsc && node -e \"const fs=require('fs');for(const f of['tamperlens.svg','Tamperlens.node.json'])fs.copyFileSync('nodes/Tamperlens/'+f,'dist/nodes/Tamperlens/'+f)\"",
+    "build": "tsc && node -e \"const fs=require('fs');for(const f of['tamperlens.svg','tamperlens.dark.svg','Tamperlens.node.json'])fs.copyFileSync('nodes/Tamperlens/'+f,'dist/nodes/Tamperlens/'+f)\"",
     "dev": "tsc --watch",
     "test": "npm run build && node --test test/*.test.mjs",
     "prepublishOnly": "npm test"

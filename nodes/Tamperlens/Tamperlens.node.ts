@@ -14,7 +14,7 @@ export class Tamperlens implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Tamperlens',
 		name: 'tamperlens',
-		icon: 'file:tamperlens.svg',
+		icon: { light: 'file:tamperlens.svg', dark: 'file:tamperlens.dark.svg' },
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
@@ -194,7 +194,6 @@ export class Tamperlens implements INodeType {
 					});
 					continue;
 				}
-				if (error instanceof NodeOperationError) throw error;
 				throw new NodeOperationError(this.getNode(), error as Error, { itemIndex: i });
 			}
 		}
