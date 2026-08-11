@@ -1,8 +1,9 @@
 # Publishes to npm from CI with a provenance statement, which n8n requires
 # for verified community nodes (local publishes rejected since 2026-05-01).
-# Auth: granular NPM_TOKEN repo secret scoped to this one package.
-# (Token-less Trusted Publishing was attempted first and the registry
-# refused the OIDC exchange despite matching config — see runs 2-5.)
+# Token-less: npm Trusted Publishing (OIDC) — the package settings on
+# npmjs.com name this repo and this workflow file.
+# npm is PINNED to 11: Node 22 bundles npm 10 (no OIDC), and npm 12.0.x
+# regressed the exchange (ENEEDAUTH with valid config — see runs 2-5).
 name: release
 
 on:
@@ -11,19 +12,20 @@ on:
 
 permissions:
   contents: read
-  id-token: write # provenance signing
+  id-token: write # OIDC token for npm Trusted Publishing + provenance
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # No registry-url: it writes an .npmrc placeholder _authToken that
+      # preempts the OIDC exchange (actions/setup-node#1551).
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org
+      - run: npm install -g npm@11
+      - run: npm --version
       - run: npm ci
       - run: npm test
-      - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish --access public
