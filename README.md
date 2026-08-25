@@ -63,7 +63,7 @@ package has **zero runtime dependencies**.
 - [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
 - [Tamperlens API quickstart](https://tamperlens.com/api)
 - [API reference](https://tamperlens.com/api-reference) · [OpenAPI](https://tamperlens.com/docs)
-- [The 18 signal families](https://tamperlens.com/pdf-fraud-signals)
+- [The 19 signal families](https://tamperlens.com/pdf-fraud-signals)
 - [Measured false-positive rate](https://tamperlens.com/evidence)
 
 ## License
