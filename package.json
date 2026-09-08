@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-tamperlens",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "n8n community node for Tamperlens — structural fraud signals for PDFs, images and Office documents. Evidence, not verdicts.",
   "keywords": [
     "n8n-community-node-package",
@@ -13,12 +13,16 @@
   "license": "MIT",
   "homepage": "https://tamperlens.com",
   "author": {
-    "name": "Douglas Haruo",
-    "email": "dloko7@gmail.com"
+    "name": "haruodev",
+    "email": "support@tamperlens.com",
+    "url": "https://haruo.dev"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/haruodev/n8n-nodes-tamperlens.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haruodev/n8n-nodes-tamperlens/issues"
   },
   "engines": {
     "node": ">=20"
