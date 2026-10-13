@@ -25,9 +25,17 @@ in the n8n community nodes documentation:
 | **Get Metadata** | The metadata a file carries — authors, tools, dates, machine paths, device traces — without a full inspection. | 1 document |
 | **Compare Documents** | Diff a candidate PDF against the original you already trust: the strongest check there is. Takes two binary fields. | 2 documents |
 
-All operations read the document from the incoming item's **binary** data and
-never persist it: Tamperlens parses files in memory and discards them with the
-response. Maximum file size 10 MB.
+All operations read the document from the incoming item's **binary** data, and
+Tamperlens parses it in memory. Maximum file size 10 MB.
+
+**What is kept.** Get Metadata and Compare Documents keep nothing. Inspect
+Document follows the retention setting of the account behind the key: for
+accounts created since 2026-10-13 the API keeps, by default, a short derived
+record of each call (hashes, signal ids and the score; never the file, its name
+or its text), and keeps the file itself, encrypted, only if the account opted
+in. To keep nothing, set the key to `retention: none` with
+`PATCH /api/v1/retention` from a signed-in session. Every field is listed at
+[tamperlens.com/privacy#retention](https://tamperlens.com/privacy#retention).
 
 ## Credentials
 
